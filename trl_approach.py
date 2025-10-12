@@ -52,7 +52,7 @@ del base_model  # free up memory
 instruct_model = AutoModelForCausalLM.from_pretrained(
     "Qwen3-0.6B-Instruct/checkpoint-39", dtype=torch.bfloat16
 )
-pipe = pipeline("text-generation", model=instruct_model,  tokenizer=tokenizer)
+pipe = pipeline("text-generation", model=instruct_model, tokenizer=tokenizer)
 prompt = "<|im_start|>user\nWhat is the capital of France? Answer in one word.<|im_end|>\n<|im_start|>assistant\n"
 response_text = pipe(prompt)[0]["generated_text"]
 response_text = response_text.replace(prompt, "")
